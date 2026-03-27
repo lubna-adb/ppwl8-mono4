@@ -332,6 +332,17 @@ Keterangan:
   - `VITE_CHECK` untuk periksa apakah .env berhasil di load. 
   - `VITE_BACKEND_URL` menyesuaikan backend production di vercel.
 
+### 3. **vercel.json**
+Vercel memiliki kendala dalam membaca route uri untuk app react, jadi routes perlu di-konfigurasi eksplisit.
+```json
+{
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}
+```
+
 ---
 
 **🚀-- Jika sudah setup file di local, push ke repo github. --🚀**
@@ -402,7 +413,7 @@ Yang dikumpulkan:
 SS nya full screen, terlihat waktu (supaya Asdos tau urutannya). Sisanya bisa Asdos cek sendiri.
 
 Contoh web production:
-  - [Frontend - monorepo-gamma-mauve.vercel.app](https://monorepo-gamma-mauve.vercel.app)
-  - [Backend - mono-asdos-backend.vercel.app](https://mono-asdos-backend.vercel.app)
+  - [Frontend: monorepo-gamma-mauve.vercel.app](https://monorepo-gamma-mauve.vercel.app)
+  - [Backend: mono-asdos-backend.vercel.app](https://mono-asdos-backend.vercel.app)
 
 Lihat [gambar-gambar ini](https://drive.google.com/drive/folders/1pIejY7qOoMoTg3Kp8sZoWwENFYMxgsvd?usp=drive_link) sebagai referensi (prefix `[submit]` berarti contoh submisi).
