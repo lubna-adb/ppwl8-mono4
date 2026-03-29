@@ -80,14 +80,13 @@ const app = new Elysia()
       access_token: tokens.access_token!,
       refresh_token: tokens.refresh_token ?? undefined,
     });
-    if (!session) return;
 
-    session.value = sessionId;
-    session.maxAge = 60 * 60 * 24;
-    session.path = "/";
-    session.httpOnly = true;
-    session.secure = true;
-    session.sameSite = "none";
+    session!.value = sessionId;
+    session!.maxAge = 60 * 60 * 24;
+    session!.path = "/";
+    session!.httpOnly = true;
+    session!.secure = true;
+    session!.sameSite = "none";
 
     return redirect(`${process.env.FRONTEND_URL}/classroom`);
   })
@@ -162,6 +161,3 @@ if (process.env.NODE_ENV != "production") {
 
 export default app;
 export type App = typeof app;
-
-
-//cek deploy
