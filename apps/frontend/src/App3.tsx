@@ -199,7 +199,7 @@ export default function App() {
 
   // Cek status login
   useEffect(() => {
-    fetch("${import.meta.env.VITE_BACKEND_URL}/auth/me", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, { credentials: "include" })
       .then((r) => r.json())
       .then((d) => setLoggedIn(d.loggedIn))
       .catch(() => setLoggedIn(false))
@@ -208,7 +208,7 @@ export default function App() {
   // Load daftar courses setelah login
   useEffect(() => {
     if (!loggedIn) return
-    fetch("${import.meta.env.VITE_BACKEND_URL}/classroom/courses", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/classroom/courses`, { credentials: "include" })
       .then((r) => r.json())
       .then((d) => setCourses(d.data ?? []))
   }, [loggedIn])
@@ -234,11 +234,11 @@ export default function App() {
   }
 
   const handleLogin = () => {
-    window.location.href = "${import.meta.env.VITE_BACKEND_URL}/auth/login"
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/login`
   }
 
   const handleLogout = async () => {
-    await fetch("${import.meta.env.VITE_BACKEND_URL}/auth/logout", { method: "POST", credentials: "include" })
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, { method: "POST", credentials: "include" })
     setLoggedIn(false)
     setCourses([])
     setItems([])

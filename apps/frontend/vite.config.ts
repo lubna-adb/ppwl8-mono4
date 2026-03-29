@@ -3,7 +3,15 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from "@tailwindcss/vite"
 import path from "path"
 
+// https://vite.dev/config/
 export default defineConfig(({ mode }) => {
+  // 1. Muat env file berdasarkan 'mode' (development, production, dll.)
+  // npm run dev -> development, npm run build -> production
+  // process.cwd() adalah direktori akar proyek Anda
+  // .env.[mode].local (Prioritas tertinggi)
+  // .env.[mode]
+  // .env.local
+  // .env (Prioritas terendah)
   const env = loadEnv(mode, process.cwd(), '');
 
   const check = env.VITE_CHECK;
@@ -11,6 +19,8 @@ export default defineConfig(({ mode }) => {
   console.log("Berhasil env:", check)
 
   return {
+    // Sekarang Anda bisa menggunakan variabel env di sini jika butuh, 
+    // misalnya untuk mengganti port secara dinamis:
     build: {
       sourcemap: true
     },
