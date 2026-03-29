@@ -7,7 +7,7 @@ import { createOAuthClient, getAuthUrl } from "./auth";
 import { getCourses, getCourseWorks, getSubmissions } from "./classroom";
 import type { ApiResponse, HealthCheck, User } from "shared";
 
-// Simple in-memory token store (ganti dengan database/session untuk production)
+// Simple in-memory token store (ganti dengan database/session untuk production).
 const tokenStore = new Map<string, { access_token: string; refresh_token?: string }>();
 
 const app = new Elysia()
@@ -162,3 +162,6 @@ if (process.env.NODE_ENV != "production") {
 
 export default app;
 export type App = typeof app;
+
+
+//cek deploy
